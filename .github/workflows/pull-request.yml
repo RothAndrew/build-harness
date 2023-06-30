@@ -5,7 +5,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}/build-harness
+  IMAGE_NAME: rothandrew/build-harness
 
 jobs:
   build:
