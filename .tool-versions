@@ -1,23 +1,23 @@
 adr-tools 3.0.0
-awscli 2.12.5
-checkov 2.3.234
-flux2 0.41.2
-golang 1.20.5
-golangci-lint 1.53.3
+awscli 2.36.44
+checkov 3.3.17
+flux2 2.9.5
+golang 1.27.1
+golangci-lint 2.13.2
 # renovate: datasource=github-tags depName=anchore/grype
-grype 0.63.1
-hadolint 2.12.0
-helm 3.12.1
+grype 0.118.0
+hadolint 2.15.1
+helm 4.3.0
 # renovate: datasource=github-tags depName=derailed/k9s
-k9s 0.27.4
-kubectl 1.27.3
-pre-commit 3.3.3
-sops 3.7.3
+k9s 0.51.0
+kubectl 1.37.0
+pre-commit 4.6.2
+sops 3.13.3
 # renovate: datasource=github-tags depName=anchore/syft
-syft 0.84.1
-terraform 1.5.2
-terraform-docs 0.16.0
-tflint 0.47.0
-tfsec 1.28.1
+syft 1.51.1
+terraform 1.16.2
+terraform-docs 0.24.0
+tflint 0.64.0
+tfsec 1.28.14
 # renovate: datasource=github-tags depName=defenseunicorns/zarf
-zarf 0.28.0
+zarf 0.85.0
