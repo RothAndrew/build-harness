@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Convert platform to valid artifact name
         id: convert-platform
-        uses: mad9000/actions-find-and-replace-string@3
+        uses: mad9000/actions-find-and-replace-string@6
         with:
           source: ${{ matrix.platform }}
           find: '/'
@@ -27,11 +27,11 @@ jobs:
           replaceAll: "true"
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Init Docker cache
         id: init-docker-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: "${{ github.workspace }}/.cache/docker"
           key: "docker|${{ hashFiles('.env') }}"
@@ -50,21 +50,21 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=${{ github.ref_name }}
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v4
 
       - name: Build image to tarball
         id: build
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v7
         with:
           context: .
           platforms: ${{ matrix.platform }}
@@ -77,7 +77,7 @@ jobs:
           make sbom IMAGE_TO_SCAN=docker-archive:./image.tar
 
       - name: Upload SBOM
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: sbom-${{steps.convert-platform.outputs.value}}
           path: |
@@ -92,7 +92,7 @@ jobs:
           make vuln-report
 
       - name: Upload Vuln Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: vuln-report-${{steps.convert-platform.outputs.value}}
           path: |
